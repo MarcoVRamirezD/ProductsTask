@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsTaskAPI", "ProductsTaskAPI\ProductsTaskAPI.csproj", "{DE43686B-E617-46B0-B6F9-EBE718463E7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsTaskAPI", "ProductsTaskAPI\ProductsTaskAPI.csproj", "{DE43686B-E617-46B0-B6F9-EBE718463E7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOs", "DTOs\DTOs.csproj", "{DF54B321-A927-405F-88D9-59F559855B3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOs", "DTOs\DTOs.csproj", "{DF54B321-A927-405F-88D9-59F559855B3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsTaskDataAccess", "ProductsTaskDataAccess\ProductsTaskDataAccess.csproj", "{8835C476-5261-4722-A2A9-7AE9F75C0100}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsTaskDataAccess", "ProductsTaskDataAccess\ProductsTaskDataAccess.csproj", "{8835C476-5261-4722-A2A9-7AE9F75C0100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductsTaskCore", "ProductsTaskCore\ProductsTaskCore.csproj", "{5B529BD1-686A-4C7D-B006-428F3D96A39C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsTaskCore", "ProductsTaskCore\ProductsTaskCore.csproj", "{5B529BD1-686A-4C7D-B006-428F3D96A39C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp - ProductsTask", "WebApp - ProductsTask\WebApp - ProductsTask.csproj", "{AF727AB4-6172-41D6-AFFB-9F9B3CC475A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5B529BD1-686A-4C7D-B006-428F3D96A39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B529BD1-686A-4C7D-B006-428F3D96A39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B529BD1-686A-4C7D-B006-428F3D96A39C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF727AB4-6172-41D6-AFFB-9F9B3CC475A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF727AB4-6172-41D6-AFFB-9F9B3CC475A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF727AB4-6172-41D6-AFFB-9F9B3CC475A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF727AB4-6172-41D6-AFFB-9F9B3CC475A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
