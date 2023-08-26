@@ -1,4 +1,13 @@
-const product = {}
+class Product {
+    constructor(name, code, price, description){
+        this.name = name;
+        this.code = code;
+        this.price = price;
+        this.description = description
+    }
+}
+
+
 
 async function getProducts(){
     const API_Service = 'https://products-task-api.azurewebsites.net/api/Product/RetrieveAll'
@@ -10,16 +19,17 @@ async function getProducts(){
         return response.json();
     })
     .then(data => {
-        console.log(data)
-        console.log(data[3])
         localStorage.setItem("productname",data[3].productName);
-        product.productName = localStorage.getItem('productname');
+        const productName = localStorage.getItem('productname');
         localStorage.setItem("productcode",data[3].productCode);
-        product.productCode = localStorage.getItem('productcode');
+        const productCode = localStorage.getItem('productcode');
         localStorage.setItem("price",data[3].price);
-        product.price = localStorage.getItem('price');
+        const price = localStorage.getItem('price');
         localStorage.setItem("description",data[3].description);
-        product.description = localStorage.getItem('description');
+        const description = localStorage.getItem('description');
+        const product = new Product(productName, productCode, price, description)
+        localStorage.clear();
+        includeProductInformation(product.name, product.code, product.price, product.description)
     })
     .catch(error => {
         console.error('Error: ', error);
@@ -28,4 +38,20 @@ async function getProducts(){
 
 getProducts()
 
-console.log(product);
+const includeProductInformation = (nameP, codeP, priceP, descriptionP) =>{
+    const productName = document.querySelector('#product-name');
+    const productCode = document.querySelector('#product-code');
+    const description = document.querySelector('#description');
+    const price = document.querySelector('#price');
+
+    productName.textContent = nameP
+    productCode.textContent = codeP
+    description.textContent = priceP
+    price.textContent = descriptionP
+
+    localStorage.setItem("currentProduct", nameP)
+}
+
+let currentProduct = localStorage.getItem('currentProduct');
+console.log(currentProduct)
+

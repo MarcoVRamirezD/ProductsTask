@@ -158,11 +158,13 @@ img {
 @media (max-width: 768px) {
     .information{
         width: 80%;
+        height: auto;
     }
 }
 
 .information input{
     max-width: auto;
+    margin-bottom: 3rem;
 }
 
 @media (min-width: 768px) {
