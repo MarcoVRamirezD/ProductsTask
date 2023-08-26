@@ -22,11 +22,17 @@ body {
     font-size: 16px;
     /* 1rem = 10px*/
     font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 .container{
     max-width: 120rem;
     margin: 0 auto;
+    flex: 1;
 }
 
 .button {
@@ -181,7 +187,8 @@ img {
 
 footer{
     text-align: center;
-    padding: 4.5rem 0rem;
+    padding: 1rem 0rem;
     background-color: var(--grey);
     color: white;
+    position: sticky;
 }

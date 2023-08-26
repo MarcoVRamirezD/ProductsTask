@@ -34,9 +34,7 @@ async function getProducts(){
     .catch(error => {
         console.error('Error: ', error);
     });    
-}
-
-getProducts()
+};
 
 const includeProductInformation = (nameP, codeP, priceP, descriptionP) =>{
     const productName = document.querySelector('#product-name');
@@ -46,12 +44,19 @@ const includeProductInformation = (nameP, codeP, priceP, descriptionP) =>{
 
     productName.textContent = nameP
     productCode.textContent = codeP
-    description.textContent = priceP
+    description.textContent = 'Price: $' + priceP + '.00'
     price.textContent = descriptionP
 
     localStorage.setItem("currentProduct", nameP)
-}
+};
 
-let currentProduct = localStorage.getItem('currentProduct');
-console.log(currentProduct)
+getProducts();
+const currentProduct = localStorage.getItem('currentProduct');
 
+const buyButton = document.querySelector('#btn-buy');
+buyButton.addEventListener("click", () => {
+    const quantity = document.querySelector('#txt-quantity').value
+    const productName = document.querySelector('#product-name').textContent
+    const message = 'Thank you for shopping with us. You have successfully purchased ' + quantity + ' of ' +  productName;
+    localStorage.setItem("message", message)
+});
