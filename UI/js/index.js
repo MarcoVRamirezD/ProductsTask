@@ -60,3 +60,8 @@ buyButton.addEventListener("click", () => {
     const message = 'Thank you for shopping with us. You have successfully purchased ' + quantity + ' of ' +  productName;
     localStorage.setItem("message", message)
 });
+
+const showImage = (smallImg) => {
+    const fullImg = document.querySelector('#imageBox')
+    fullImg.src = smallImg.src;
+}

@@ -34,9 +34,24 @@
     <main class="container">
 
         <div class="sections">
-            <section class="section images">
+            <!-- <section class="section images img-gallery">
                 <img class="product-Image" src="img/product1.jpg" alt="This is a picture of the coffee machine">
-            </section>
+            </section> -->
+
+            <div class="images">
+
+                <div class="small-img">
+                    <img height="92px" width="92px" src="img/product1.jpg" onclick="showImage(this)">
+                    <img height="92px" width="92px" src="img/product2.jpg" onclick="showImage(this)">
+                    <img height="92px" width="92px" src="img/product3.jpg" onclick="showImage(this)">
+                    <img height="92px" width="92px" src="img/product4.jpg" onclick="showImage(this)">
+                </div>
+
+                <div class="img-container">
+                    <img id="imageBox" src="img/product1.jpg" alt="">
+                </div>
+                
+            </div>
 
             <section class="section information">
                 <h2 id="product-name">Product Name</h2>
