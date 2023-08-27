@@ -1,14 +1,4 @@
-class Product {
-    constructor(name, code, price, description){
-        this.name = name;
-        this.code = code;
-        this.price = price;
-        this.description = description
-    }
-}
-
-
-
+//Interaction with the API to get the product information
 async function getProducts(){
     const API_Service = 'https://products-task-api.azurewebsites.net/api/Product/RetrieveAll'
     fetch(API_Service)
@@ -19,17 +9,7 @@ async function getProducts(){
         return response.json();
     })
     .then(data => {
-        localStorage.setItem("productname",data[3].productName);
-        const productName = localStorage.getItem('productname');
-        localStorage.setItem("productcode",data[3].productCode);
-        const productCode = localStorage.getItem('productcode');
-        localStorage.setItem("price",data[3].price);
-        const price = localStorage.getItem('price');
-        localStorage.setItem("description",data[3].description);
-        const description = localStorage.getItem('description');
-        const product = new Product(productName, productCode, price, description)
-        localStorage.clear();
-        includeProductInformation(product.name, product.code, product.price, product.description)
+        includeProductInformation(data[3].productName, data[3].productCode, data[3].price, data[3].description)
     })
     .catch(error => {
         console.error('Error: ', error);
@@ -46,22 +26,52 @@ const includeProductInformation = (nameP, codeP, priceP, descriptionP) =>{
     productCode.textContent = codeP
     description.textContent = 'Price: $' + priceP + '.00'
     price.textContent = descriptionP
-
-    localStorage.setItem("currentProduct", nameP)
 };
 
 getProducts();
-const currentProduct = localStorage.getItem('currentProduct');
 
-const buyButton = document.querySelector('#btn-buy');
-buyButton.addEventListener("click", () => {
-    const quantity = document.querySelector('#txt-quantity').value
-    const productName = document.querySelector('#product-name').textContent
-    const message = 'Thank you for shopping with us. You have successfully purchased ' + quantity + ' of ' +  productName;
-    localStorage.setItem("message", message)
-});
-
+//Here we can control the gallery 
 const showImage = (smallImg) => {
     const fullImg = document.querySelector('#imageBox')
     fullImg.src = smallImg.src;
 }
+
+//function to send a POST request to the API to buy a product
+async function buyNow() {
+    const API_Service = 'https://products-task-api.azurewebsites.net/api/Product/Buy';
+    
+    console.log(document.querySelector('#product-name').textContent);
+    console.log(document.querySelector('#txt-quantity').value);
+    const purchase = {
+        productName: document.querySelector('#product-name').textContent,
+        quantity: document.querySelector('#txt-quantity').value
+    }
+
+    fetch(API_Service, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(purchase)
+    })
+    .then(response => response.json())
+    .then(data => {
+        const message = 'Thank you for shopping with us. You have successfully purchased ' + data.quantity + ' of ' +  data.productName;
+        localStorage.setItem("message", message)
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+
+//EventListener added to the Buy Now button to make the interaction with the api and proceed with the purchase message in anothe HTML file
+const buyButton = document.querySelector('#btn-buy');
+buyButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    buyNow()
+    setTimeout(() =>{
+        window.location.href = buyButton.href
+    }, 2000)
+});
+
+
