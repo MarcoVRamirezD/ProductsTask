@@ -56,7 +56,7 @@ async function buyNow() {
     })
     .then(response => response.json())
     .then(data => {
-        const message = 'Thank you for shopping with us. You have successfully purchased ' + data.quantity + ' of ' +  data.productName;
+        const message = 'Thank you for shopping with us. You have successfully purchased ' + data.quantity + ' of the product: ' +  data.productName;
         localStorage.setItem("message", message)
     })
     .catch(error => {
