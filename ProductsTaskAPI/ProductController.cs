@@ -29,6 +29,20 @@ namespace ProductsTaskAPI
             }
         }
 
+        [HttpPost]
+        [Route("Buy")]
+        public async Task<IActionResult> Buy(Purchase purchase)
+        {
+            try
+            {
+                return Ok(purchase);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet]
         [Route("RetrieveAll")]
         public async Task<IActionResult> RetrieveAll()
