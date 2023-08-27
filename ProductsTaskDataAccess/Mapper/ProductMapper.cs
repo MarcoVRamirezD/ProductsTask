@@ -52,11 +52,11 @@ namespace ProductsTaskDataAccess.Mapper
 
         protected double GetDoubleValue(Dictionary<string, object> dic, string attName)
         {
-            var val = dic[attName];
-            if (dic.ContainsKey(attName) && (val is double))
-                return (double)dic[attName];
+            object val;
+            if (dic.TryGetValue(attName, out val) && (val is int || val is double || val is decimal))
+                return Convert.ToDouble(val);
 
-            return 0;
+            return -1.0;
         }
         #endregion
 
